@@ -1,1 +1,9 @@
-openjdk7.yml
+applications:
+- java
+parameters:
+  java:
+    environment:
+      enabled: true
+      version: ${_param:java_environment_version}
+      platform: ${_param:java_environment_platform}
+      development: true
