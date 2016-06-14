@@ -4,6 +4,6 @@ parameters:
   java:
     environment:
       enabled: true
-      version: ${_param:java_environment_version}
+      version: "${_param:java_environment_version}"
       platform: ${_param:java_environment_platform}
       development: true
