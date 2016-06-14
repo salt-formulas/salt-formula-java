@@ -11,14 +11,18 @@
 {% set java_build = '666' %}
 {% endif %}
 
+{%- if pillar.java.environment.get('headless', False) %}
+{%- set headless_str = "-headless" %}
+{%- endif %}
+
 {% set environment = salt['grains.filter_by']({
     'Debian': {
         'version': java_version,
         'release': java_release,
         'home_dir': '/usr/lib/java',
         'build': java_build,
-        'pkgs': ['openjdk-' + java_version|string + '-jre'],
-        'dev_pkgs': ['openjdk-' + java_version|string + '-jdk'],
+        'pkgs': ['openjdk-' + java_version|string + '-jre' + headless_str|default("")],
+        'dev_pkgs': ['openjdk-' + java_version|string + '-jdk' + headless_str|default("")],
     },
     'RedHat': {
         'version': java_version,
