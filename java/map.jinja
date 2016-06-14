@@ -6,6 +6,9 @@
 {% elif java_version == '8' %}
 {% set java_release = '60' %}
 {% set java_build = '27' %}
+{% else %}
+{% set java_release = '666' %}
+{% set java_build = '666' %}
 {% endif %}
 
 {% set environment = salt['grains.filter_by']({
@@ -14,24 +17,24 @@
         'release': java_release,
         'home_dir': '/usr/lib/java',
         'build': java_build,
-        'pkgs': ['openjdk-' + java_version + '-jre'],
-        'dev_pkgs': ['openjdk-' + java_version + '-jdk'],
+        'pkgs': ['openjdk-' + java_version|string + '-jre'],
+        'dev_pkgs': ['openjdk-' + java_version|string + '-jdk'],
     },
     'RedHat': {
         'version': java_version,
         'release': java_release,
         'home_dir': '/usr/lib/java',
         'build': java_build,
-        'pkgs': ['java-1.' + java_version + '.0-openjdk'],
-        'dev_pkgs': ['java-1.' + java_version + '.0-openjdk'],
+        'pkgs': ['java-1.' + java_version|string + '.0-openjdk'],
+        'dev_pkgs': ['java-1.' + java_version|string + '.0-openjdk'],
     },
 }, merge=salt['pillar.get']('java:environment')) %}
 
 {%- set java_home = environment.home_dir %}
-{%- set version_name = 'jdk1.'+environment.version+'.0_'+environment.release %}
-{%- set file_name = 'jdk-'+environment.version+'u'+environment.release %}
+{%- set version_name = 'jdk1.'+environment.version|string+'.0_'+environment.release %}
+{%- set file_name = 'jdk-'+environment.version|string+'u'+environment.release %}
 {%- set prefix = '/usr/share/java' %}
-{%- set source_url = 'http://download.oracle.com/otn-pub/java/jdk/'+environment.version+'u'+environment.release+'-b'+environment.build+'/'+file_name+'-linux-x64.tar.gz' %}
+{%- set source_url = 'http://download.oracle.com/otn-pub/java/jdk/'+environment.version|string+'u'+environment.release+'-b'+environment.build+'/'+file_name+'-linux-x64.tar.gz' %}
 {%- set dl_opts = '-b oraclelicense=accept-securebackup-cookie -L' %}
 {%- set java_real_home = prefix + '/' + version_name %}
 
