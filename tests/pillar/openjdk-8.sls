@@ -1,7 +1,6 @@
 java:
   environment:
     enabled: true
-    version: '7'
+    version: '8'
     platform: openjdk
     development: true
-
