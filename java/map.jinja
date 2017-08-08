@@ -17,6 +17,7 @@
 
 {% set environment = salt['grains.filter_by']({
     'Debian': {
+
         'version': java_version,
         'release': java_release,
         'home_dir': '/usr/lib/java',
@@ -35,16 +36,29 @@
 }, merge=salt['pillar.get']('java:environment')) %}
 
 {%- set java_home = environment.home_dir %}
-{%- set version_name = 'jdk1.'+environment.version+'.0_'+environment.release %}
-{%- set file_name = 'jdk-'+environment.version+'u'+environment.release %}
 {%- set prefix = '/usr/share/java' %}
-{%- set source_url = 'http://download.oracle.com/otn-pub/java/jdk/'+environment.version+'u'+environment.release+'-b'+environment.build+'/'+file_name+'-linux-x64.tar.gz' %}
-{%- set dl_opts = '-b oraclelicense=accept-securebackup-cookie -L' %}
+{%- set oracle_cookie = 'Cookie: oraclelicense=accept-securebackup-cookie' %}
+{%- set dl_opts = '-LOH' %}
+{%- if java_version == 7 %}
+{%- set source_url = salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk7.txt?p=downloads.tgz') %}
+{%- set version_name = salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk7.txt?p=version') %}
+{%- set oracle_file_name = 'jdk-' + salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk7.txt?p=version_parsed.major') + 'u' + salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk7.txt?p=version_parsed.minor') + '-linux-x64.tar.gz' %}
+{%- elif java_version == 9 %}
+{%- set source_url = salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk9.txt?p=downloads.tgz') %}
+{%- set version_name = salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk9.txt?p=version') %}
+{%- set oracle_file_name = 'jdk-' + salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk9.txt?p=version_parsed.major') + 'u' + salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk9.txt?p=version_parsed.minor') + '-linux-x64.tar.gz' %}
+{% else %}
+{%- set source_url = salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk8.txt?p=downloads.tgz') %}
+{%- set version_name = salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk8.txt?p=version') %}
+{%- set oracle_file_name = 'jdk-' + salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk8.txt?p=version_parsed.major') + 'u' + salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk8.txt?p=version_parsed.minor') + '-linux-x64.tar.gz' %}
+{%- endif %}
 {%- set java_real_home = prefix + '/' + version_name %}
 
 {%- do environment.update( { 'version_name' : version_name,
     'source_url' : source_url,
     'dl_opts' : dl_opts,
+    'oracle_cookie' : oracle_cookie,
+    'oracle_file_name' : oracle_file_name,
     'java_home' : java_home,
     'prefix' : prefix,
     'java_real_home' : java_real_home

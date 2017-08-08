@@ -7,13 +7,20 @@
   - mode: 755
   - makedirs: True
 
-unpack_java_source:
+download_java_source:
   cmd.run:
-    - name: curl {{ environment.dl_opts }} '{{ environment.source_url }}' | tar xz --no-same-owner
+    - name: "curl {{ environment.dl_opts }} '{{ environment.oracle_cookie }}' '{{ environment.source_url }}'"
     - cwd: {{ environment.prefix }}
     - unless: test -d {{ environment.java_real_home }}
     - require:
       - file: {{ environment.prefix }}
+
+unpack_java_source:
+  archive.extracted:
+    - name: {{ environment.java_real_home }}
+    - source: "{{ environment.prefix }}/{{ environment.oracle_file_name }}"
+    - require:
+      - cmd: download_java_source
 
 java_install:
   alternatives.install:

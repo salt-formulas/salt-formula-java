@@ -37,9 +37,9 @@ platforms:
 
 suites:
 
-  - name: <%=ENV['SUITE'] || 'openjdk-8'%>
+  - name: <%=ENV['JDK'] || 'openjdk'%>-<%=ENV['JAVA_VERSION'] || '8'%>
     provisioner:
       pillars-from-files:
-        java.sls: tests/pillar/<%=ENV['SUITE'] || 'openjdk-8'%>.sls
+        java.sls: tests/pillar/<%=ENV['JDK'] || 'openjdk'%>-<%=ENV['JAVA_VERSION'] || '8'%>.sls
 
 # vim: ft=yaml sw=2 ts=2 sts=2 tw=125

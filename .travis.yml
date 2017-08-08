@@ -17,10 +17,10 @@ install:
   - bundle install
 
 env:
-    - SUITE=openjdk-7 PLATFORM=trevorj/salty-whales:trusty
-    - SUITE=oracle-jdk-7 PLATFORM=trevorj/salty-whales:trusty
-    - SUITE=openjdk-8 PLATFORM=trevorj/salty-whales:xenial
-    - SUITE=oracle-jdk-8 PLATFORM=trevorj/salty-whales:xenial
+    - PLATFORM=trevorj/salty-whales:trusty JDK=openjdk JAVA_VERSION=7
+    - PLATFORM=trevorj/salty-whales:trusty JDK=oracle-jdk JAVA_VERSION=7
+    - PLATFORM=trevorj/salty-whales:xenial JDK=openjdk JAVA_VERSION=8
+    - PLATFORM=trevorj/salty-whales:xenial JDK=oracle-jdk JAVA_VERSION=8
 
 before_script:
   - set -o pipefail
