@@ -17,17 +17,17 @@ install:
   - bundle install
 
 env:
-    - PLATFORM=trevorj/salty-whales:trusty JDK=openjdk JAVA_VERSION=7
-    - PLATFORM=trevorj/salty-whales:trusty JDK=oracle-jdk JAVA_VERSION=7
-    - PLATFORM=trevorj/salty-whales:xenial JDK=openjdk JAVA_VERSION=8
-    - PLATFORM=trevorj/salty-whales:xenial JDK=oracle-jdk JAVA_VERSION=8
+    - PLATFORM=trevorj/salty-whales:trusty SUITE=openjdk-7
+    - PLATFORM=trevorj/salty-whales:trusty SUITE=oracle-jdk-7
+    - PLATFORM=trevorj/salty-whales:xenial SUITE=openjdk-8
+    - PLATFORM=trevorj/salty-whales:xenial SUITE=oracle-jdk-8
 
 before_script:
   - set -o pipefail
   - make test | tail
 
 script:
-  - test ! -e .kitchen.yml || bundle exec kitchen test -t tests/integration
+  - KITCHEN_LOCAL_YAML=.kitchen.travis.yml bundle exec kitchen test -t tests/integration
 
 notifications:
   webhooks:

@@ -37,9 +37,24 @@ platforms:
 
 suites:
 
-  - name: <%=ENV['JDK'] || 'openjdk'%>-<%=ENV['JAVA_VERSION'] || '8'%>
+  - name: openjdk-7
     provisioner:
       pillars-from-files:
-        java.sls: tests/pillar/<%=ENV['JDK'] || 'openjdk'%>-<%=ENV['JAVA_VERSION'] || '8'%>.sls
+        java.sls: tests/pillar/openjdk-7.sls
+
+  - name: openjdk-8
+    provisioner:
+      pillars-from-files:
+        java.sls: tests/pillar/openjdk-8.sls
+
+  - name: oracle-jdk-7
+    provisioner:
+      pillars-from-files:
+        java.sls: tests/pillar/oracle-jdk-7.sls
+
+  - name: oracle-jdk-8
+    provisioner:
+      pillars-from-files:
+        java.sls: tests/pillar/oracle-jdk-8.sls
 
 # vim: ft=yaml sw=2 ts=2 sts=2 tw=125
