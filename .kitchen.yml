@@ -47,14 +47,19 @@ suites:
       pillars-from-files:
         java.sls: tests/pillar/openjdk-8.sls
 
-  - name: oracle-jdk-7
+  - name: openjdk-9
     provisioner:
       pillars-from-files:
-        java.sls: tests/pillar/oracle-jdk-7.sls
+        java.sls: tests/pillar/openjdk-9.sls
 
   - name: oracle-jdk-8
     provisioner:
       pillars-from-files:
         java.sls: tests/pillar/oracle-jdk-8.sls
+
+  - name: oracle-jdk-9
+    provisioner:
+      pillars-from-files:
+        java.sls: tests/pillar/oracle-jdk-9.sls
 
 # vim: ft=yaml sw=2 ts=2 sts=2 tw=125

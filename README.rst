@@ -7,25 +7,38 @@ Programming language environment.
 Sample pillars
 ==============
 
-OpenJDK environment with development libs
+OpenJDK 8 environment with development libs
 
 .. code-block:: yaml
 
     java:
       environment:
         enabled: true
-        version: '7'
+        version: '8'
         platform: openjdk
         development: true
 
-Oracle JAVA JDK
+Oracle JAVA JDK 8
 
 .. code-block:: yaml
 
     java:
       environment:
         enabled: true
-        version: '7'
+        version: '8'
+        platform: oracle-java
+        development: true
+
+Oracle JAVA JDK 9
+
+.. code-block:: yaml
+
+    java:
+      environment:
+        enabled: true
+        version: '9'
+        release: '0.1'
+        build: '11'
         platform: oracle-java
         development: true
 

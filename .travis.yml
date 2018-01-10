@@ -18,9 +18,10 @@ install:
 
 env:
     - PLATFORM=trevorj/salty-whales:trusty SUITE=openjdk-7
-    - PLATFORM=trevorj/salty-whales:trusty SUITE=oracle-jdk-7
     - PLATFORM=trevorj/salty-whales:xenial SUITE=openjdk-8
+    - PLATFORM=trevorj/salty-whales:xenial SUITE=openjdk-9
     - PLATFORM=trevorj/salty-whales:xenial SUITE=oracle-jdk-8
+    - PLATFORM=trevorj/salty-whales:xenial SUITE=oracle-jdk-9
 
 before_script:
   - set -o pipefail
