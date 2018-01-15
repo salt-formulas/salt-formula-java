@@ -10,6 +10,6 @@ Vcs-Git: https://github.com/tcpcloud/salt-formula-java.git
 
 Package: salt-formula-java
 Architecture: all
-Depends: ${misc:Depends}, salt-master, reclass
+Depends: ${misc:Depends}
 Description: Java Salt formula
  Install and configure Java environment.
