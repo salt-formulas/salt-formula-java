@@ -17,11 +17,15 @@ install:
   - bundle install
 
 env:
-    - PLATFORM=trevorj/salty-whales:trusty SUITE=openjdk-7
-    - PLATFORM=trevorj/salty-whales:xenial SUITE=openjdk-8
-    - PLATFORM=trevorj/salty-whales:xenial SUITE=openjdk-9
-    - PLATFORM=trevorj/salty-whales:xenial SUITE=oracle-jdk-8
-    - PLATFORM=trevorj/salty-whales:xenial SUITE=oracle-jdk-9
+    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-xenial-salt-2016.3 SUITE=openjdk-7
+    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-xenial-salt-2017.7 SUITE=openjdk-8
+    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-xenial-salt-2017.7 SUITE=openjdk-9
+    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-xenial-salt-2017.7 SUITE=oracle-jdk-8
+    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-xenial-salt-2017.7 SUITE=oracle-jdk-9
+#    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-bionic-salt-2017.7 SUITE=openjdk-8
+#    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-bionic-salt-2017.7 SUITE=openjdk-9
+#    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-bionic-salt-2017.7 SUITE=oracle-jdk-8
+#    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-bionic-salt-2017.7 SUITE=oracle-jdk-9
 
 before_script:
   - set -o pipefail
