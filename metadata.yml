@@ -1,4 +1,4 @@
 name: "java"
 version: "0.2"
-source: "https://github.com/tcpcloud/salt-formula-java"
+source: "https://github.com/salt-formulas/salt-formula-java"
 
