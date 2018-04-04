@@ -46,7 +46,8 @@
 {%- set java_release = environment.release %}
 {%- set version_name = java_version + '.' + java_release + '+' + java_build %}
 {%- set oracle_file_name = 'jdk-' + java_version + '.' + java_release + '_linux-x64_bin.tar.gz' %}
-{%- set source_url = 'http://download.oracle.com/otn-pub/java/jdk/' + version_name + '/' + oracle_file_name %}
+{%- set oracle_hash = environment.oracle_hash %}
+{%- set source_url = 'http://download.oracle.com/otn-pub/java/jdk/' + version_name + '/' + oracle_hash + '/' + oracle_file_name %}
 {%- endif %}
 {%- set java_real_home = prefix + '/' + version_name %}
 {%- endif %}
