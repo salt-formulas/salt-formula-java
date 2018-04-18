@@ -17,14 +17,26 @@ install:
   - bundle install
 
 env:
-    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-xenial-salt-2017.7 SUITE=openjdk-8
-    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-xenial-salt-2017.7 SUITE=openjdk-9
-    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-xenial-salt-2017.7 SUITE=oracle-jdk-8
-    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-xenial-salt-2017.7 SUITE=oracle-jdk-9
-#    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-bionic-salt-2017.7 SUITE=openjdk-8
-#    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-bionic-salt-2017.7 SUITE=openjdk-9
-#    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-bionic-salt-2017.7 SUITE=oracle-jdk-8
-#    - PLATFORM=epcim/salt-formulas:saltstack-ubuntu-bionic-salt-2017.7 SUITE=oracle-jdk-9
+    - PLATFORM=epcim/salt:saltstack-ubuntu-xenial-salt-2017.7 SUITE=openjdk-8
+    - PLATFORM=epcim/salt:saltstack-ubuntu-xenial-salt-2017.7 SUITE=openjdk-9
+    - PLATFORM=epcim/salt:saltstack-ubuntu-xenial-salt-2017.7 SUITE=openjdk-10
+    - PLATFORM=epcim/salt:saltstack-ubuntu-xenial-salt-2017.7 SUITE=oracle-jdk-8
+    - PLATFORM=epcim/salt:saltstack-ubuntu-xenial-salt-2017.7 SUITE=oracle-jdk-10
+    - PLATFORM=epcim/salt:saltstack-ubuntu-xenial-salt-2018.3 SUITE=openjdk-8
+    - PLATFORM=epcim/salt:saltstack-ubuntu-xenial-salt-2018.3 SUITE=openjdk-9
+    - PLATFORM=epcim/salt:saltstack-ubuntu-xenial-salt-2018.3 SUITE=openjdk-10
+    - PLATFORM=epcim/salt:saltstack-ubuntu-xenial-salt-2018.3 SUITE=oracle-jdk-8
+    - PLATFORM=epcim/salt:saltstack-ubuntu-xenial-salt-2018.3 SUITE=oracle-jdk-10
+#    - PLATFORM=epcim/salt:saltstack-ubuntu-bionic-salt-2017.7 SUITE=openjdk-8
+#    - PLATFORM=epcim/salt:saltstack-ubuntu-bionic-salt-2017.7 SUITE=openjdk-9
+#    - PLATFORM=epcim/salt:saltstack-ubuntu-bionic-salt-2017.7 SUITE=openjdk-10
+#    - PLATFORM=epcim/salt:saltstack-ubuntu-bionic-salt-2017.7 SUITE=oracle-jdk-8
+#    - PLATFORM=epcim/salt:saltstack-ubuntu-bionic-salt-2017.7 SUITE=oracle-jdk-10
+#    - PLATFORM=epcim/salt:saltstack-ubuntu-bionic-salt-2018.3 SUITE=openjdk-8
+#    - PLATFORM=epcim/salt:saltstack-ubuntu-bionic-salt-2018.3 SUITE=openjdk-9
+#    - PLATFORM=epcim/salt:saltstack-ubuntu-bionic-salt-2018.3 SUITE=openjdk-10
+#    - PLATFORM=epcim/salt:saltstack-ubuntu-bionic-salt-2018.3 SUITE=oracle-jdk-8
+#    - PLATFORM=epcim/salt:saltstack-ubuntu-bionic-salt-2018.3 SUITE=oracle-jdk-10
 
 before_script:
   - set -o pipefail

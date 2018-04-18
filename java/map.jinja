@@ -41,7 +41,7 @@
 {%- set source_url = salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk8.txt?p=downloads.tgz') %}
 {%- set version_name = salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk8.txt?p=version') %}
 {%- set oracle_file_name = 'jdk-' + salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk8.txt?p=version_parsed.major') + 'u' + salt['cmd.run']('curl -s https://lv.binarybabel.org/catalog-api/java/jdk8.txt?p=version_parsed.minor') + '-linux-x64.tar.gz' %}
-{%- elif java_version == '9' %}
+{%- elif (java_version == '9' or java_version == '10') %}
 {%- set java_build = environment.build %}
 {%- set java_release = environment.release %}
 {%- set version_name = java_version + '.' + java_release + '+' + java_build %}

@@ -32,7 +32,7 @@ verifier:
 platforms:
   - name: <%=ENV['PLATFORM'] ||  'saltstack-ubuntu-xenial-salt-stable' %>
     driver_config:
-      image: <%=ENV['PLATFORM'] || 'epcim/salt-formulas:saltstack-ubuntu-xenial-salt-stable'%>
+      image: <%=ENV['PLATFORM'] || 'epcim/salt:saltstack-ubuntu-xenial-salt-stable'%>
       platform: ubuntu
 
 suites:
@@ -52,6 +52,11 @@ suites:
       pillars-from-files:
         java.sls: tests/pillar/openjdk-9.sls
 
+  - name: openjdk-10
+    provisioner:
+      pillars-from-files:
+        java.sls: tests/pillar/openjdk-10.sls
+
   - name: oracle-jdk-8
     provisioner:
       pillars-from-files:
@@ -62,4 +67,8 @@ suites:
       pillars-from-files:
         java.sls: tests/pillar/oracle-jdk-9.sls
 
+  - name: oracle-jdk-10
+    provisioner:
+      pillars-from-files:
+        java.sls: tests/pillar/oracle-jdk-10.sls
 # vim: ft=yaml sw=2 ts=2 sts=2 tw=125

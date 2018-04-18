@@ -18,6 +18,22 @@ OpenJDK 8 environment with development libs
         platform: openjdk
         development: true
 
+OpenJDK 10
+
+.. code-block:: yaml
+
+    java:
+      environment:
+        enabled: true
+        version: '10'
+        release: '0.1'
+        platform: openjdk
+        oracle_hash: 'fb4372174a714e6b8c52526dc134031e'
+        sha256_hash: '0b14aaecd5323457bd15dc7798d08181ad04bad4156e55387ed714190912a9ce'
+        verify_sha256_hash: true
+        development: false
+
+
 Oracle JAVA JDK 8
 
 .. code-block:: yaml
@@ -29,16 +45,17 @@ Oracle JAVA JDK 8
         platform: oracle-java
         development: true
 
-Oracle JAVA JDK 9
+Oracle JAVA JDK 10
 
 .. code-block:: yaml
 
     java:
       environment:
         enabled: true
-        version: '9'
+        version: '10'
         release: '0.1'
-        build: '11'
+        build: '10'
+        oracle_hash: 'fb4372174a714e6b8c52526dc134031e'
         platform: oracle-java
         development: true
 
